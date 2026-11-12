@@ -4,6 +4,7 @@ import { LETTERS } from '../data';
 const AnswerButton = ({
   index,
   text,
+  isFocused,
   isSelected,
   isCorrect,
   isRevealed,
@@ -11,6 +12,7 @@ const AnswerButton = ({
   onClick,
 }) => {
   let className = 'answer-btn';
+  if (isFocused && !isRevealed) className += ' focused';
   if (isRevealed) {
     if (isCorrect) className += ' correct';
     else if (isSelected) className += ' wrong';

@@ -6,6 +6,7 @@ const QuestionCard = ({
   question,
   index,
   total,
+  focusedIndex,
   selectedOption,
   isRevealed,
   onSelectOption,
@@ -23,6 +24,7 @@ const QuestionCard = ({
             key={idx}
             index={idx}
             text={opt}
+            isFocused={focusedIndex === idx}
             isSelected={selectedOption === idx}
             isCorrect={idx === question.answer}
             isRevealed={isRevealed}

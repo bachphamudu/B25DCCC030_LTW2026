@@ -125,3 +125,42 @@ button:disabled {
   gap: 12px;
   margin: 16px 0;
 }
+
+.answer-btn.focused {
+  border: 3px solid #1d4ed8;
+  background-color: #eff6ff;
+}
+
+.powerups-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.powerups-bar button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #f97316;
+  background-color: #fff7ed;
+  color: #c2410c;
+  font-weight: 600;
+  cursor: pointer;
+}
+.powerups-bar button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.high-score {
+  color: #d97706;
+  font-size: 1.1rem;
+  margin: 12px 0;
+}
+.history-stats {
+  display: flex;
+  gap: 24px;
+  margin: 12px 0;
+  font-weight: 600;
+}
+.clear-btn {
+  margin-bottom: 12px;
+}

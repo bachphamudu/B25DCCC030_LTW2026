@@ -3,21 +3,19 @@ import { TIME_PER_QUESTION } from '../data';
 
 const TimeBar = ({ timeLeft, isFrozen }) => {
   const percent = (timeLeft / TIME_PER_QUESTION) * 100;
-  const barColor = timeLeft <= 5 ? 'red' : 'green';
+  const barColor = timeLeft <= 5 ? '#ef4444' : '#22c55e';
 
   return (
-    <div style={{ marginBottom: '16px' }}>
-      <p>
-        {`Còn ${timeLeft} giây`}
-        {isFrozen ? ' (đã dừng)' : ''}
-      </p>
-      <div style={{ width: '100%', backgroundColor: '#eee', height: '14px' }}>
+    <div className="timebar-wrapper">
+      <div>
+        Còn {timeLeft} giây {isFrozen && '(đã dừng)'}
+      </div>
+      <div className="timebar-track">
         <div
+          className="timebar-fill"
           style={{
             width: `${percent}%`,
             backgroundColor: barColor,
-            height: '100%',
-            transition: 'width 0.2s linear',
           }}
         />
       </div>

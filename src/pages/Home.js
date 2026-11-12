@@ -1,8 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Home = ({ playerName, setPlayerName }) => {
+const Home = ({ playerName, setPlayerName, history }) => {
   const navigate = useNavigate();
+
+  const topRecord =
+    history.length > 0
+      ? [...history].sort((a, b) => b.score - a.score)[0]
+      : null;
 
   const handleStart = (e) => {
     e.preventDefault();
@@ -11,22 +16,27 @@ const Home = ({ playerName, setPlayerName }) => {
   };
 
   return (
-    <div>
+    <div className="home-container">
       <h1>Nhanh như chớp</h1>
       <p>
-        Luật chơi: Bạn sẽ trả lời liên tiếp 15 câu hỏi trắc nghiệm về HTML, CSS,
-        JavaScript và React. Mỗi câu có 15 giây suy nghĩ. Trả lời đúng được cộng
-        điểm theo độ khó và điểm thưởng tốc độ. Trả lời sai hoặc hết giờ được 0
-        điểm và chuyển sang câu tiếp theo.
+        Trả lời 15 câu hỏi về HTML, CSS, JavaScript và React. Mỗi câu có 15
+        giây suy nghĩ; trả lời càng nhanh điểm cộng tốc độ càng cao!
       </p>
 
-      <form onSubmit={handleStart}>
+      {topRecord && (
+        <p className="high-score">
+          <strong>
+            Kỷ lục: {topRecord.score} điểm – {topRecord.name}
+          </strong>
+        </p>
+      )}
+
+      <form onSubmit={handleStart} className="start-form">
         <input
           type="text"
           placeholder="Nhập tên người chơi..."
           value={playerName}
           onChange={(e) => setPlayerName(e.target.value)}
-          style={{ padding: '8px', marginRight: '8px' }}
         />
         <button type="submit" disabled={!playerName.trim()}>
           Bắt đầu

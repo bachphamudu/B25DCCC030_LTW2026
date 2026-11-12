@@ -57,7 +57,11 @@ const Result = () => {
                 key={idx}
                 className={isCorrect ? 'row-correct' : 'row-wrong'}
               >
-                <td>Câu {item.id}</td>
+                <td>
+                    {item.swappedToId
+                    ? `Câu ${item.id} (đổi sang câu ${item.swappedToId})`
+                    : `Câu ${item.id}`}
+                </td>
                 <td>{item.chosen !== null ? LETTERS[item.chosen] : '-'}</td>
                 <td>{LETTERS[item.correct]}</td>
                 <td>{item.timeLeft} giây</td>
